@@ -1,35 +1,34 @@
 cmake_minimum_required(VERSION 3.7.2)
-project(HitSpoT)
+set(HST_TITLE HitSpoT)
+project(${HST_TITLE})
 
 # Version number
 set(HST_VERSION_MAJOR 0)
-set(HST_VERSION_MINOR 1)
-set(HST_TITLE "HitSpoT")
-
+set(HST_VERSION_MINOR 2)
 set(HST_NAME hitspot)
 set(MST_NAME mathspot)
 
 # Includes
 set(HST_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 set(MST_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/${MST_NAME}/include)
-include_directories(${HST_INCLUDE_DIR}
-                    ${MST_INCLUDE_DIR})
+include_directories(${HST_INCLUDE_DIR} ${MST_INCLUDE_DIR})
 
 # Sources
 set(HST_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src)
 set(SOURCES
 	${HST_SOURCE_DIR}/BoundingBox.cpp
 	${HST_SOURCE_DIR}/CollisionSystem.cpp)
-source_group("Sources" FILES ${SOURCES})
+source_group(Sources FILES ${SOURCES})
 
 set(CMAKE_C_STANDARD   11)
 set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(mathspot)
+add_subdirectory(${MST_NAME})
 
 # Library
 add_library(${HST_NAME} ${SOURCES})
 set_target_properties(${HST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(${HST_NAME} PUBLIC ${MST_NAME})
 target_link_libraries(${HST_NAME} ${MST_NAME})
 
 # Test

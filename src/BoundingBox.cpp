@@ -5,13 +5,12 @@ namespace hst = hitspot;
 
 hst::BoundingBox::BoundingBox()
 	: mCollisions{}
-{
-}
+{}
 
 
-bool hst::BoundingBox::isCollidingWith(const hst::BoundingBox * box) const
+bool hst::BoundingBox::isCollidingWith(const hst::BoundingBox* box) const
 {
-	for (const hst::BoundingBox * b : mCollisions)
+	for (const hst::BoundingBox* b : mCollisions)
 	{
 		if (box == b)
 		{
@@ -22,13 +21,13 @@ bool hst::BoundingBox::isCollidingWith(const hst::BoundingBox * box) const
 }
 
 
-void hst::BoundingBox::addCollision(const hst::BoundingBox * box)
+void hst::BoundingBox::addCollision(const hst::BoundingBox* box)
 {
 	mCollisions.push_back(box);
 }
 
 
-void hst::BoundingBox::removeCollision(const hst::BoundingBox * box)
+void hst::BoundingBox::removeCollision(const hst::BoundingBox* box)
 {
 	for (size_t i{ 0 }; i < mCollisions.size(); ++i)
 	{
