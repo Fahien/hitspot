@@ -4,7 +4,14 @@ namespace hst = hitspot;
 
 
 hst::BoundingBox::BoundingBox()
-	: mCollisions{}
+	: mPayload{ nullptr }
+	, mCollisions{}
+{}
+
+
+hst::BoundingBox::BoundingBox(void* payload)
+	: mPayload{ payload }
+	, mCollisions{}
 {}
 
 

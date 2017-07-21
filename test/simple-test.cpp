@@ -1,8 +1,5 @@
-#include "CollisionSystem.h"
-#include "BoundingBox.h"
-#include <cassert>
+#include "test.h"
 
-namespace hsp = hitspot;
 
 int main()
 {

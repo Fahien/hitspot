@@ -15,6 +15,13 @@ class BoundingBox : public mst::Rectangle
 {
 public:
 	BoundingBox();
+	BoundingBox(void* payload);
+
+	/// Returns the payload
+	inline void* getPayload() { return mPayload; }
+
+	/// Sets the payload
+	inline void setPayload(void* payload) { mPayload = payload; }
 
 	/// Returns the current collisions
 	const std::vector<const BoundingBox*>& getCollisions() const { return mCollisions; }
@@ -33,6 +40,7 @@ public:
 	std::function<void(BoundingBox* box)> endCollidingWith;
 
 private:
+	void* mPayload;
 	std::vector<const BoundingBox*> mCollisions;
 };
 

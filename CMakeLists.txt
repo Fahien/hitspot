@@ -47,5 +47,6 @@ function(make_test TEST_NAME)
 endfunction(make_test)
 
 make_test(simple-test)
+make_test(payload-test)
 
 include(CTest)
