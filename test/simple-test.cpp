@@ -1,24 +1,25 @@
 #include "test.h"
 
+using namespace hitspot;
 
 int main()
 {
-	hsp::CollisionSystem cs{};
+	CollisionSystem cs;
 
-	hsp::BoundingBox a{};
-	hsp::BoundingBox b{};
+	BoundingBox a;
+	BoundingBox b;
 	a.width = a.height = b.width = b.height = 1.0f;
 
-	cs.addBox(&a);
-	cs.addBox(&b);
+	cs.AddBox(&a);
+	cs.AddBox(&b);
 
-	cs.update();
+	cs.Update();
 
-	assert(a.isCollidingWith(&b));
+	assert(a.IsCollidingWith(&b));
 
 	b.x = 1.0f;
-	cs.update();
-	assert(!a.isCollidingWith(&b));
+	cs.Update();
+	assert(!a.IsCollidingWith(&b));
 
 	return EXIT_SUCCESS;
 }

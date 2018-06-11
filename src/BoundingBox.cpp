@@ -1,23 +1,23 @@
-#include "BoundingBox.h"
+#include "hitspot/BoundingBox.h"
 
-namespace hst = hitspot;
+using namespace hitspot;
 
 
-hst::BoundingBox::BoundingBox()
+BoundingBox::BoundingBox()
 	: mPayload{ nullptr }
 	, mCollisions{}
 {}
 
 
-hst::BoundingBox::BoundingBox(void* payload)
+BoundingBox::BoundingBox(void* payload)
 	: mPayload{ payload }
 	, mCollisions{}
 {}
 
 
-bool hst::BoundingBox::isCollidingWith(const hst::BoundingBox* box) const
+bool BoundingBox::IsCollidingWith(const BoundingBox* box) const
 {
-	for (const hst::BoundingBox* b : mCollisions)
+	for (const BoundingBox* b : mCollisions)
 	{
 		if (box == b)
 		{
@@ -28,13 +28,13 @@ bool hst::BoundingBox::isCollidingWith(const hst::BoundingBox* box) const
 }
 
 
-void hst::BoundingBox::addCollision(const hst::BoundingBox* box)
+void BoundingBox::AddCollision(const BoundingBox* box)
 {
 	mCollisions.push_back(box);
 }
 
 
-void hst::BoundingBox::removeCollision(const hst::BoundingBox* box)
+void BoundingBox::RemoveCollision(const BoundingBox* box)
 {
 	for (size_t i{ 0 }; i < mCollisions.size(); ++i)
 	{

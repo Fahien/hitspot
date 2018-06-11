@@ -1,5 +1,6 @@
 #include "test.h"
 
+using namespace hitspot;
 
 class Foo
 {
@@ -14,27 +15,27 @@ public:
 
 int main()
 {
-	hsp::CollisionSystem cs{};
+	CollisionSystem cs;
 
 	Foo payload;
 
-	hsp::BoundingBox a{ &payload };
-	a.startCollidingWith = [&a](hsp::BoundingBox* other)
+	BoundingBox a{ &payload };
+	a.startCollidingWith = [&a](BoundingBox* other)
 	{
-		Foo* p{ static_cast<Foo*>(a.getPayload()) };
+		Foo* p{ static_cast<Foo*>(a.GetPayload()) };
 		p->bar();
 		p->test = true;
 	};
 
-	hsp::BoundingBox b{};
+	BoundingBox b;
 	a.width = a.height = b.width = b.height = 1.0f;
 
-	cs.addBox(&a);
-	cs.addBox(&b);
+	cs.AddBox(&a);
+	cs.AddBox(&b);
 
-	cs.update();
+	cs.Update();
 
-	assert(a.isCollidingWith(&b));
+	assert(a.IsCollidingWith(&b));
 	assert(payload.test);
 
 	return EXIT_SUCCESS;

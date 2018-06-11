@@ -1,25 +1,25 @@
-#include "CollisionSystem.h"
-#include "BoundingBox.h"
+#include "hitspot/BoundingBox.h"
+#include "hitspot/CollisionSystem.h"
 
-namespace hst = hitspot;
+using namespace hitspot;
 
 
-void hst::CollisionSystem::update()
+void CollisionSystem::Update()
 {
 	for (size_t i{ 0 }; i < mBoxes.size(); ++i)
 	{
-		hst::BoundingBox* box{ mBoxes[i] };
+		BoundingBox* box{ mBoxes[i] };
 
 		for (size_t j{ i + 1 }; j < mBoxes.size(); ++j)
 		{
-			hst::BoundingBox* otherBox{ mBoxes[j] };
-			bool isColliding{ box->isCollidingWith(otherBox) };
+			BoundingBox* otherBox{ mBoxes[j] };
+			bool isColliding{ box->IsCollidingWith(otherBox) };
 
 			if (box->intersects(otherBox))
 			{
 				if (!isColliding)
 				{
-					box->addCollision(otherBox);
+					box->AddCollision(otherBox);
 					if (box->startCollidingWith)
 					{
 						box->startCollidingWith(otherBox);
@@ -34,7 +34,7 @@ void hst::CollisionSystem::update()
 			{
 				if (isColliding)
 				{
-					box->removeCollision(otherBox);
+					box->RemoveCollision(otherBox);
 					if (box->endCollidingWith)
 					{
 						box->endCollidingWith(otherBox);
