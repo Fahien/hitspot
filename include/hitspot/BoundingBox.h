@@ -35,9 +35,9 @@ public:
 	/// Tests whether a Box is in the collisions list
 	bool IsCollidingWith(const BoundingBox* box) const;
 
-	std::function<void(BoundingBox* box)> startCollidingWith;
-	std::function<void(BoundingBox* box)> collidingWith;
-	std::function<void(BoundingBox* box)> endCollidingWith;
+	std::function<void(BoundingBox* box)> fStartCollidingWith;
+	std::function<void(BoundingBox* box)> fCollidingWith;
+	std::function<void(BoundingBox* box)> fEndCollidingWith;
 
 private:
 	void* mPayload;
