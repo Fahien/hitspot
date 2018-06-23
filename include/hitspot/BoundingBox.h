@@ -1,5 +1,5 @@
-#ifndef HST_BOUNDINGBOX_H
-#define HST_BOUNDINGBOX_H
+#ifndef HST_BOUNDINGBOX_H_
+#define HST_BOUNDINGBOX_H_
 
 #include <vector>
 #include <functional>
@@ -46,4 +46,4 @@ private:
 
 }
 
-#endif // HST_BOUNDINGBOX_H
+#endif // HST_BOUNDINGBOX_H_

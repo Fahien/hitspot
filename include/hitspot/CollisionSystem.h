@@ -1,5 +1,5 @@
-#ifndef HST_COLLISIONSYSTEM_H
-#define HST_COLLISIONSYSTEM_H
+#ifndef HST_COLLISIONSYSTEM_H_
+#define HST_COLLISIONSYSTEM_H_
 
 #include <vector>
 
@@ -23,4 +23,4 @@ private:
 
 }
 
-#endif // HST_COLLISIONSYSTEM_H
+#endif // HST_COLLISIONSYSTEM_H_
