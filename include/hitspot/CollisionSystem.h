@@ -12,13 +12,14 @@ class CollisionSystem
 {
 public:
 	/// Adds a BoundingBox to the system
-	void AddBox(BoundingBox* box) { mBoxes.push_back(box); }
+	/// @param[in] b Box to add
+	void AddBox(BoundingBox* b) { mBoxes.push_back(b); }
 
 	/// Updates the system
 	void Update();
 
 private:
-	std::vector<BoundingBox*> mBoxes;
+	std::vector<BoundingBox*> mBoxes{};
 };
 
 }
