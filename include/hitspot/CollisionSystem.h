@@ -1,5 +1,5 @@
-#ifndef HST_COLLISIONSYSTEM_H
-#define HST_COLLISIONSYSTEM_H
+#ifndef HST_COLLISIONSYSTEM_H_
+#define HST_COLLISIONSYSTEM_H_
 
 #include <vector>
 
@@ -12,15 +12,16 @@ class CollisionSystem
 {
 public:
 	/// Adds a BoundingBox to the system
-	void AddBox(BoundingBox* box) { mBoxes.push_back(box); }
+	/// @param[in] b Box to add
+	void AddBox(BoundingBox* b) { mBoxes.push_back(b); }
 
 	/// Updates the system
 	void Update();
 
 private:
-	std::vector<BoundingBox*> mBoxes;
+	std::vector<BoundingBox*> mBoxes{};
 };
 
 }
 
-#endif // HST_COLLISIONSYSTEM_H
+#endif // HST_COLLISIONSYSTEM_H_

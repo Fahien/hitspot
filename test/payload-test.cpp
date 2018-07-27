@@ -20,9 +20,9 @@ int main()
 	Foo payload;
 
 	BoundingBox a{ &payload };
-	a.startCollidingWith = [&a](BoundingBox* other)
+	a.fStartCollidingWith = [&a](BoundingBox* other)
 	{
-		Foo* p{ static_cast<Foo*>(a.GetPayload()) };
+		Foo* p{ reinterpret_cast<Foo*>(a.GetPayload()) };
 		p->bar();
 		p->test = true;
 	};

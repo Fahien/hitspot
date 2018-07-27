@@ -12,32 +12,47 @@ void CollisionSystem::Update()
 
 		for (size_t j{ i + 1 }; j < mBoxes.size(); ++j)
 		{
-			BoundingBox* otherBox{ mBoxes[j] };
-			bool isColliding{ box->IsCollidingWith(otherBox) };
+			BoundingBox* other{ mBoxes[j] };
+			bool isColliding{ box->IsCollidingWith(other) };
 
-			if (box->Intersects(otherBox))
+			if (box->Intersects(other))
 			{
 				if (!isColliding)
 				{
-					box->AddCollision(otherBox);
-					if (box->startCollidingWith)
+					box->AddCollision(other);
+					other->AddCollision(box);
+					if (box->fStartCollidingWith)
 					{
-						box->startCollidingWith(otherBox);
+						box->fStartCollidingWith(other);
+					}
+					if (other->fStartCollidingWith)
+					{
+						other->fStartCollidingWith(box);
 					}
 				}
-				if (box->collidingWith)
+
+				if (box->fCollidingWith)
 				{
-					box->collidingWith(otherBox);
+					box->fCollidingWith(other);
+				}
+				if (other->fCollidingWith)
+				{
+					other->fCollidingWith(box);
 				}
 			}
 			else
 			{
 				if (isColliding)
 				{
-					box->RemoveCollision(otherBox);
-					if (box->endCollidingWith)
+					box->RemoveCollision(other);
+					other->RemoveCollision(box);
+					if (box->fEndCollidingWith)
 					{
-						box->endCollidingWith(otherBox);
+						box->fEndCollidingWith(other);
+					}
+					if (other->fEndCollidingWith)
+					{
+						other->fEndCollidingWith(box);
 					}
 				}
 			}
