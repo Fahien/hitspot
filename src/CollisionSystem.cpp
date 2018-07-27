@@ -15,7 +15,7 @@ void CollisionSystem::Update()
 			BoundingBox* otherBox{ mBoxes[j] };
 			bool isColliding{ box->IsCollidingWith(otherBox) };
 
-			if (box->intersects(otherBox))
+			if (box->Intersects(otherBox))
 			{
 				if (!isColliding)
 				{

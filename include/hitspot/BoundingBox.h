@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <functional>
-#include "MathSpot.h"
+#include "mathspot/Math.h"
 
 namespace mst = mathspot;
 
